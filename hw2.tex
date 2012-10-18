@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-
+\usepackage{amsmath}
 \newcommand{\piRsquare}{\pi r^2}
 
 \title{Quant. Comp. HW - 2}
@@ -44,24 +44,40 @@ First let's apply the first hadamard gate and calls this intermediate state $|a>
 $$|a> = (H\otimes H)|11>$$
 $$= \frac{1}{2} (|0> - |1>)(|0> - |1>)$$
 $$=\frac{1}{2}(|0>|0> - |0>|1> - |1>|0> - |1>|1>)$$
+In computing the Hadamard on this next, a general equation can be set up for the four 'f' functions. Since anything XOR'ed with itself is 0, and anything XOR'ed with 1 is it's complement, we can write $U_{f}|a>$ as:
+$$U_{f}|a> = \frac{1}{2}[|0>|f(0)> - |0>|\bar{f}(0)> - |1>|f(1)> - |1>|\bar{f}(1)>] $$
 Now let's consider the two cases $f(0)=f(1)$ and $f(0) \neq f(1)$ :
 \\\\ Case 1: $f(0)=f(1)$
 \\This implies we are using either f0 or f3.
-\\For f3:
-$$ U_{f_{3}}|a> = U_{f_{3}} [\frac{1}{2}(|0>|0> - |0>|1> - |1>|0> - |1>|1>) ]$$
-$$ = (1/2)[|0>|0 \otimes 1> - |0>|1 \otimes 1> - |1>|0 \otimes 1> - |1>|1 \otimes 1>$$
-$$ = (1/2)[|0>|1> - |0>|0> - |1>|1> - |1>|0>] $$
-Applying the final Hadamard to this:
-$$(H\otimes H)\frac{1}{2}[|01> - |00> - |11> - |10>] $$
+\\\\$f_{0}$:
+$$ HU_{f_{0}}|a> = H \frac{1}{2}[|00> - |01> - |10> - |11>]$$
+$$  = \frac{1}{2}[-|00> + |11> + |11> + |01> + |10>]$$
+\[
+\boxed{ = \frac{1}{2}[-|00> + 2|11> + |01> + |10>] \>\>\>\>\>\>(f_{0}) }
+\] 
+\\$f_{3}$:
+$$ HU_{f_{3}}|a> = H  \frac{1}{2}[|01> - |00> - |11> - |10>]$$
 $$ = \frac{1}{4}[ (|00> + |01> - |10> + |11>) -  (|00> + |01> + |10> + |11>)$$$$- (|00> - |01> - |10> - |11>) - (|00> + |01> - |10> - |11>)]$$
 $$ = \frac{1}{4}[-2|00> + 2|11>$$
-$$ = \frac{1}{2}[|00> + |11>$$
-\\For f0:
-$$ U_{f_{0}}|a> = U_{f_{0}} [\frac{1}{2}(|0>|0> - |0>|1> - |1>|0> - |1>|1>) ]$$
-Since $U_{f_{0}}$ always returns 0, the computation is straightforward since anything XOR'ed with 0 is just itself
-$$ = (1/2)[|0>|0> - |0>|1> - |1>|0> - |1>|1>$$
-
-
+\[
+\boxed{ = \frac{1}{2}[|00> + |11> 	\>\>\>\>\>\>(f_{3})}
+\]
+\\\\
+Now for the case of $f(0) \neq f(1)$, so we look at f1 and f2. Note that applying U is easy here too, because we are always XOR a bit with it's complement, which always yields 1. Since the input gates will be the same for $f_{1} and f_{2}$, then each should return the same state:
+\\\\
+$f_{1}:$
+$$ HU_{f_1}|a> = H \frac{1}{2}[|00> - |01> - |11> - |10>]  $$
+$$ = \frac{1}{4}[2|01> + 2|11> - 2|00> + 2|10> + 2|11>] $$
+\[
+\boxed{ = \frac{1}{2}[-|00> + |01> + |10> + |11>] \>\>\>\> (f_{1}) }
+\]
+$f_{2}:$
+$$ HU_{f_3} |a> = H \frac{1}{2}[|01> - |00> - |11> - |10>]$$
+$$ = \frac{1}{4}[-2|01> - 2|11> - 2|00> + 2|10> + 2|11> $$
+\[
+\boxed{ = \frac{1}{2}[-|00> + |01> + |10>] \>\>\>\>(f_{2})}
+\]
+\\\\\\\\
 \subsection{Numbered formulae}
 
 Useful Hadamards:
