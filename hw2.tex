@@ -21,14 +21,37 @@ $$= (1/2) + (1/2) = 1$$
 Therefore the state is \textbf{valid}.
 
 \section{Find valid superposition}
+
+Given $|\phi> = (1/2)|00> + \frac{x}{2 \sqrt{2}}|01> + \frac{1}{2 \sqrt{2}}|10> +  \frac{1}{2}|11>$, what values of x would make this a valid superposition?
+
+Again the normalization condition is applied:
+$$|\frac{1}{2}|^{2} + |\frac{x}{2 \sqrt{2}}|^2 + |\frac{1}{2 \sqrt{2}}|^2 +  |\frac{1}{2}|^2 = 1$$
+$$(1/4) + \frac{|x|^2}{8} + (1/8) + (1/4) = 1$$
+$$\frac{(5 + |x|^2)}{8} = 1$$
+$$|x|^2 = 3$$
+Since x can be imaginary, all we know is that the real part must be equal to $\sqrt{3}$
+Therefore:
+\[
+\boxed{x = \sqrt{3} + bi}
+\]
 \section{}
+
+Let $|\psi> = \frac{1}{\sqrt{3}}(|00> + |01> + |10>)$
+Find:
+$$|\phi> = (H \otimes H)|\psi>$$
+$$ =  \frac{1}{\sqrt{6}}[(|00> + |01> + |10> + |11>)$$$$ + (|00> - |01> + |10> - |11>) $$$$+ (|00> + |01> - |10> + |11>)]$$
+$$ =  \frac{1}{\sqrt{6}}[3|00>+ |01> + |10> + |11>]$$
+\[
+\boxed{ = \frac{1}{2}|00> + \frac{1}{6}|1> + \frac{1}{6}|2> - \frac{1}{6}|3>}
+\]
 \section{Deutsch Problem}
 
 Suppose we take $U_{f}$ from the Deutsch problem and compute
 $$(H\otimes 2)U_{f} (H\otimes 2)|11>$$
 Recall that for the Deutsch function:
 \\
-\begin{table}
+\begin{table}[h]
+\centering
     \begin{tabular}{|l|l|l|}
         \hline
         ~  & X=0 & X=1 \\ \hline
@@ -76,8 +99,28 @@ $$ HU_{f_3} |a> = H \frac{1}{2}[|01> - |00> - |11> - |10>]$$
 $$ = \frac{1}{4}[-2|01> - 2|11> - 2|00> + 2|10> + 2|11> $$
 \[
 \boxed{ = \frac{1}{2}[-|00> + |01> + |10>] \>\>\>\>(f_{2})}
+\]\
+
+\section{Bernstein-Verizani}
+
+Take f(x) from the Bernstein-Verizani problem and compute:
+$$U_{f}(H^{n \otimes 1})(|0>_{n}|1>_{1})$$
+$$ = U_{f} (\frac{1}{2^{n/2}}\displaystyle\sum\limits_{x=0}^{2^{n} - 1} |x>) \frac{1}{\sqrt{2}}(|0> - |1>)$$
+Since $ U_{f}|x>_{n} \frac{1}{\sqrt{2}}(|0>-|1>) = (-1)^{f(x)}|x>_{n} \frac{1}{\sqrt{2}}(|0> - |1>) $
+$$ = \frac{1}{2^{n/2}} (\displaystyle\sum\limits_{x=0}^{2^{n} - 1} (-1)^{f(x)}|x>) \frac{1}{\sqrt{2}}(|0> - |1>) $$
+\[
+\boxed{ = \frac{1}{2^{(n+1)/2}} (\displaystyle\sum\limits_{x=0}^{2^{n} - 1} (-1)^{f(x)}|x>)(|0> - |1>)}
 \]
-\\\\\\\\
+Recall that the function f(x) in the Bernstein-Verizani is $ a \cdot x$. Therefore, f(x) is always either 0 or 1, and so each value in the sum is either $|x>$ or $-|x>$.
+The possible values of the input register are:
+\[
+\boxed{\frac{1}{2^{n/2}} (\displaystyle\sum\limits_{x=0}^{2^{n} - 1} (-1)^{f(x)}|x>)}
+\]
+The only possible value of the output register is the superposed state:
+\[
+\boxed{ \frac{1}{2^{(n+1)/2}}(|0> - |1>)}
+\]
+
 \subsection{Numbered formulae}
 
 Useful Hadamards:
