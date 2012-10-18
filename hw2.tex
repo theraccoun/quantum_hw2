@@ -121,7 +121,28 @@ The only possible value of the output register is the superposed state:
 \boxed{ \frac{1}{2^{(n+1)/2}}(|0> - |1>)}
 \]
 
-\subsection{Numbered formulae}
+\section{Derive State}
+Derive the state from problem 3 using any 1-bit gates and the 2-bit gate cNOT starting from $|00>$
+Just applying a hadamard to expand leaves a useless state, since all other gates applied maintain the state. So first apply a NOT gate to the first bit:
+$$(X \otimes 1)|00> = |10>$$
+Applying a hadamard to this yields:
+$$H(X \otimes 1)|00> =  \frac{1}{2}(|00> + |01> - |10> - |11>)$$
+Applying cNOT gates:
+$$C_{21}H(X \otimes 1)|00> =  \frac{1}{2}(|00> + |11> - |10> - |01>)$$
+And another cNOT:
+$$C_{12}C_{21}H(X \otimes 1)|00> =  \frac{1}{2}(|00> + |10> - |11> - |01>)$$
+Applying a X to the second bit:
+$$(X \otimes 2)C_{12}C_{21}H(X \otimes 1)|00> =  \frac{1}{2}(|01> + |11> - |10> - |00>)$$
+Applying a Hadamard to this:
+$$H(X \otimes 2)C_{12}C_{21}H(X \otimes 1)|00> =  \frac{1}{2}(|00> - |10> - |11> - (|00>+|01>))$$
+$$ = \frac{1}{2}[-|10> - |01> - |11>]$$
+Now I can just NOT each bit
+$$(X \otimes 1)(X \otimes 2)H(X \otimes 2)C_{12}C_{21}H(X \otimes 1)|00> $$
+\[
+\boxed{=  \frac{1}{\sqrt{3}}[|00> + |01> + |10>]}
+\]
+
+\section{Numbered formulae}
 
 Useful Hadamards:
 \begin{equation}
@@ -148,6 +169,11 @@ Use the \emph{equation} environment to get numbered formulae, e.g.,
 \end{equation}
 
 \section{Acknowledgments}
+
+I'm now going to assume I have a $C_{H}$, which is a controlled hadamard gate, that functions just like a cNOT gate except it applies the hadamard operator instead of the NOT operator to the non-control bit.
+$$C_{H_{12}}H|00> =  \frac{1}{2}[|00> + |01> + |1> \frac{1}{\sqrt{2}}(|0> + |1>) + |1>  \frac{1}{\sqrt{2}}(|0> - |1>]$$
+$$ =  \frac{1}{2}[|00> + |01> +  \frac{1}{\sqrt{2}}(|10> +  \frac{1}{\sqrt{2}}|11> +  \frac{1}{\sqrt{2}}|10> -  \frac{1}{\sqrt{2}}|11>]$$
+$$ =  \frac{1}{2}[|00> + |01> + \frac{2}{\sqrt{2}}|10>]$$
 
 Thanks to my buddies {\AE}schyulus and Chlo\"{e},
 who helped me define the macro \verb9\piRsquare9
